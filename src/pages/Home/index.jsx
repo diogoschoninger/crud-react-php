@@ -9,7 +9,7 @@ export const Home = () => {
     fetch("http://localhost:8080/crud-react-php/api/index.php")
     .then((response) => response.json())
     .then((responseJson) => (
-      setData(responseJson.records)
+      setData(responseJson)
     ));
   }
 
