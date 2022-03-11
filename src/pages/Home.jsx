@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import { Container } from '../components/Container';
+
 export const Home = () => {
   const [data, setData] = useState([]);
 
@@ -17,10 +19,9 @@ export const Home = () => {
   }, []);
 
   return (
-    <div style={{maxWidth: '1100px', margin: 'auto'}}>
+    <Container>
       <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
         <h1>Listar</h1>
-
         <Link to="/cadastrar">
           <button>Cadastrar</button>
         </Link>
@@ -46,6 +47,6 @@ export const Home = () => {
           ))}
         </tbody>
       </table>
-    </div>
+    </Container>
   );
 }

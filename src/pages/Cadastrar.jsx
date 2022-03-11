@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Container } from '../components/Container'
 
 export const Cadastrar = () => {
   const [produto, setProduto] = useState({
@@ -47,7 +48,7 @@ export const Cadastrar = () => {
   }
 
   return (
-    <div>
+    <Container>
       <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
         <h1>Cadastrar</h1>
 
@@ -65,6 +66,6 @@ export const Cadastrar = () => {
         <input type="text" name="descricao" placeholder="Descrição do produto" onChange={valorInput}/><br/>
         <button type="submit">Cadastrar</button>
       </form>
-    </div>
+    </Container>
   );
 }
