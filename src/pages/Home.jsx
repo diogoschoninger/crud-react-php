@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
-import { Table, Titulo } from './styles';
+import { Link } from 'react-router-dom';
 
 export const Home = () => {
   const [data, setData] = useState([]);
@@ -18,10 +17,16 @@ export const Home = () => {
   }, []);
 
   return (
-    <div>
-      <Titulo>Listar</Titulo>
+    <div style={{maxWidth: '1100px', margin: 'auto'}}>
+      <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+        <h1>Listar</h1>
 
-      <Table>
+        <Link to="/cadastrar">
+          <button>Cadastrar</button>
+        </Link>
+      </div>
+
+      <table border="1" style={{width: '100%', margin: 'auto'}}>
         <thead>
           <tr>
             <th>Id</th>
@@ -40,7 +45,7 @@ export const Home = () => {
             </tr>
           ))}
         </tbody>
-      </Table>
+      </table>
     </div>
   );
 }
