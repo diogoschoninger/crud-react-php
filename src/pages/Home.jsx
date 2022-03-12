@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Container } from '../components/Container';
+import { Header } from '../components/Header';
 
-export const Home = () => {
+export function Home() {
   const [data, setData] = useState([]);
 
   const getProdutos = async () => {
@@ -20,12 +21,12 @@ export const Home = () => {
 
   return (
     <Container>
-      <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+      <Header>
         <h1>Listar</h1>
         <Link to="/cadastrar">
           <button>Cadastrar</button>
         </Link>
-      </div>
+      </Header>
 
       <table border="1" style={{width: '100%', margin: 'auto'}}>
         <thead>

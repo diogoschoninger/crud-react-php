@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Container } from '../components/Container'
 
-export const Cadastrar = () => {
+import { Container } from '../components/Container';
+import { Header } from '../components/Header';
+
+export function Cadastrar() {
   const [produto, setProduto] = useState({
     titulo: '',
     descricao: ''
@@ -43,19 +45,19 @@ export const Cadastrar = () => {
       setStatus({
         type: 'erro',
         mensagem: 'Produto não cadastrado'
-      })
-    })
+      });
+    });
   }
 
   return (
     <Container>
-      <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+      <Header>
         <h1>Cadastrar</h1>
 
         <Link to="/">
           <button>Listar</button>
         </Link>
-      </div>
+      </Header>
 
       {status.type ? <p>{status.mensagem}</p> : ""}
 
