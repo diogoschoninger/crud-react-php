@@ -43,7 +43,12 @@ export function Home() {
               <td>{produto.id}</td>
               <td>{produto.titulo}</td>
               <td>{produto.descricao}</td>
-              <td>Visualizar | Editar | Excluir</td>
+              <td>
+                <Link to={"/visualizar/" + produto.id}>
+                  <button>Visualizar</button>
+                </Link>
+                  | Editar | Excluir
+              </td>
             </tr>
           ))}
         </tbody>
