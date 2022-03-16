@@ -16,7 +16,7 @@ export function Visualizar() {
     }
 
     getProduto();
-  }, []);
+  }, [params.id]);
 
   return(
     <Container>
