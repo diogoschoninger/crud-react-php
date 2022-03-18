@@ -6,13 +6,41 @@ import { Header } from '../components/Header';
 
 export function Home() {
   const [data, setData] = useState([]);
+  const [status, setStatus] = useState({
+    type: '',
+    mensagem: ''
+  });
 
   const getProdutos = async () => {
     fetch("http://localhost:8080/crud-react-php/api/index.php")
     .then((response) => response.json())
     .then((responseJson) => (
       setData(responseJson)
-    ));
+    ))
+  }
+
+  const apagarProduto = async (id) => {
+    await fetch("http://localhost:8080/crud-react-php/api/excluir.php?id=" + id)
+      .then(response => response.json())
+      .then(response => {
+        if (response.erro) {
+          setStatus({
+            type: "erro",
+            mensagem: response.mensagem
+          });
+        } else {
+          setStatus({
+            type: "success",
+            mensagem: response.mensagem
+          });
+        }
+      })
+      .catch(() => {
+        setStatus({
+          type: "erro",
+          mensagem: "Erro: Produto não excluído"
+        });
+      });
   }
 
   useEffect(() => {
@@ -27,6 +55,8 @@ export function Home() {
           <button>Cadastrar</button>
         </Link>
       </Header>
+      
+      {status.type ? <p>{status.mensagem}</p> : ""}
 
       <table border="1" style={{width: '100%', margin: 'auto'}}>
         <thead>
@@ -50,7 +80,7 @@ export function Home() {
                 <Link to={"/editar/" + produto.id}>
                   <button>Editar</button>
                 </Link>
-                Excluir
+                <button onClick={() => apagarProduto(produto.id)}>Excluir</button>
               </td>
             </tr>
           ))}
