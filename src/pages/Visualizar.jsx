@@ -5,18 +5,18 @@ import { Container } from '../components/Container';
 import { Header } from '../components/Header';
 
 export function Visualizar() {
-  const params = useParams();
+  const id = useParams().id;
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const getProduto = async () => {
-      await fetch("http://localhost:8080/crud-react-php/api/visualizar.php?id=" + params.id)
+      await fetch("http://localhost:8080/crud-react-php/api/visualizar.php?id=" + id)
       .then((response) => response.json())
       .then((responseJson) => setData(responseJson.produto));
     }
 
     getProduto();
-  }, [params.id]);
+  }, [id]);
 
   return(
     <Container>
